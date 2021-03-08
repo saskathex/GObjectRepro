@@ -28,20 +28,5 @@ namespace GObjectRepro.UI
         {
             // do nothing
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (!_disposed)
-                {
-                    _disposed = true;
-                }
-            }
-
-            base.Dispose(disposing);
-        }
-
-        private bool _disposed = false;
     }
 }
