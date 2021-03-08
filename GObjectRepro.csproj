@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UI\Frame1.glade" />
+    <None Remove="UI\Frame2.glade" />
+    <None Remove="UI\MainWindow.glade" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Frame1.glade" />
+    <EmbeddedResource Include="UI\Frame2.glade" />
+    <EmbeddedResource Include="UI\MainWindow.glade" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GtkSharp" Version="3.24.24.4" />
+  </ItemGroup>
+
+</Project>
