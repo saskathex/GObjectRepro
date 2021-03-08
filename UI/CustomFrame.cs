@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace GObjectRepro.UI
 {
-    public abstract class CustomFrame : Frame, IUpdateActions
+    public abstract class CustomFrame : Frame
     {
 
         protected CustomFrame(Builder builder, IntPtr handle)
@@ -21,8 +21,6 @@ namespace GObjectRepro.UI
             }
             else
                 throw new NotSupportedException();
-
-            _updateActionsDelegate = new UpdateActionsDelegate(this);
         }
 
         protected CustomFrame(IntPtr handle)
@@ -45,21 +43,5 @@ namespace GObjectRepro.UI
         }
 
         private bool _disposed = false;
-        private UpdateActionsDelegate _updateActionsDelegate = null;
-
-        private bool OnIdle()
-        {
-            if (_disposed)
-                return false;
-
-
-            // invoke this routine again on the next Idle moment.
-            return true;
-        }
-
-        void IUpdateActions.UpdateActions()
-        {
-            // do nothing
-        }
     }
 }
