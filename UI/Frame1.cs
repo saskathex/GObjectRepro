@@ -11,14 +11,26 @@ namespace GObjectRepro.UI
             var fullname = MethodBase.GetCurrentMethod().DeclaringType.FullName;
             var builder = new Builder(null, fullname + ".glade", null);
 
-            return new Frame1(builder, builder.GetObject("Frame").Handle);
+            return new Frame1(builder, builder.GetRawOwnedObject("Frame"));
         }
 
         protected Frame1(Builder builder, IntPtr handle)
             : base(builder, handle)
         {
-            // do nothing
+            Frame.BorderWidth = 0;
+            Frame.ShadowType = ShadowType.None;
         }
+
+
+#pragma warning disable 649
+
+        [Builder.Object]
+        private readonly Frame Frame;
+
+        [Builder.Object]
+        private readonly Label FrameLabel;
+#pragma warning restore 649
+
     }
 
 }

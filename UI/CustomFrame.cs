@@ -10,6 +10,8 @@ namespace GObjectRepro.UI
         protected CustomFrame(Builder builder, IntPtr handle)
             : base(handle)
         {
+            Debug.WriteLine($"Creating {this.GetType()}");
+
             Debug.Assert(builder != null);
             builder.Autoconnect(this);
 
@@ -26,7 +28,16 @@ namespace GObjectRepro.UI
         protected CustomFrame(IntPtr handle)
             : this(builder: null, handle)
         {
-            // do nothing
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (disposing)
+            {
+                Debug.WriteLine($"Disposing {this.GetType()}");
+            }
         }
     }
 }

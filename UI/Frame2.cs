@@ -11,7 +11,7 @@ namespace GObjectRepro.UI
             var fullname = MethodBase.GetCurrentMethod().DeclaringType.FullName;
             var builder = new Builder(null, fullname + ".glade", null);
 
-            return new Frame2(builder, builder.GetObject("Frame").Handle);
+            return new Frame2(builder, builder.GetRawOwnedObject("Frame"));
         }
 
         protected Frame2(Builder builder, IntPtr handle)
